@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-COPY DemoAPI_VPS/*.csproj ./DemoAPI/
+COPY DemoAPI_VPS/*.csproj ./DemoAPI_VPS/
 RUN dotnet restore ./DemoAPI_VPS/DemoAPI_VPS.csproj
 
 COPY . .

@@ -1,0 +1,28 @@
+services:
+  api:
+    build: .
+    container_name: demo-api
+    ports:
+      - "5000:8080"
+    depends_on:
+      - postgres
+    environments:
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=demo_db;Username=thien;Password=123456 
+
+  postgres:
+    image: postgres:16
+    container_name: demo-postgres
+    environment:
+      POSTGRES_USER: thien
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: demo_db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+     - "5432:5432"
+volumes:
+  postgres-data:
+
+  
+     

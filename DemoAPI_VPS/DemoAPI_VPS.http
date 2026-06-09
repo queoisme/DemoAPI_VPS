@@ -1,0 +1,6 @@
+@DemoAPI_VPS_HostAddress = http://localhost:5091
+
+GET {{DemoAPI_VPS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

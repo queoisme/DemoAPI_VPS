@@ -41,4 +41,11 @@ app.MapGet("/students/{id:int}", async (int id, AppDbContext db) =>
     var student = await db.Students.FindAsync(id);
     return student is null ? Results.NotFound() : Results.Ok(student);
 });
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
+
 app.Run();
